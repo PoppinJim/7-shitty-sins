@@ -1,0 +1,153 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Sprites/cancelPrompt.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/choicePrompt.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/InitPrompt.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/observePrompt.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/pickPrompt.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 22.5183
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=13]
+resource_name = "On_Ready"
+length = 0.35
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("cancel:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0, -50, -50, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.35 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("pickup:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0, 50, 50, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.35 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("observe:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -0.276541, 0, 0, 0, -50, -50, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.35 )
+}
+
+[node name="NPC_InitPrompt" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="cancel" type="AnimatedSprite" parent="." groups=[
+"choicePrompt",
+]]
+frames = SubResource( 4 )
+playing = true
+script = ExtResource( 2 )
+choice = "CANCEL"
+
+[node name="Area2D" type="Area2D" parent="cancel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cancel/Area2D"]
+shape = SubResource( 5 )
+
+[node name="pickup" type="AnimatedSprite" parent="." groups=[
+"choicePrompt",
+]]
+frames = SubResource( 9 )
+playing = true
+script = ExtResource( 2 )
+choice = "PICKUP"
+
+[node name="Area2D" type="Area2D" parent="pickup"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup/Area2D"]
+shape = SubResource( 5 )
+
+[node name="observe" type="AnimatedSprite" parent="." groups=[
+"choicePrompt",
+]]
+position = Vector2( -0.276541, 0 )
+frames = SubResource( 12 )
+playing = true
+script = ExtResource( 2 )
+choice = "OBSERVE"
+
+[node name="Area2D" type="Area2D" parent="observe"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="observe/Area2D"]
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/On_Ready = SubResource( 13 )
+[connection signal="mouse_entered" from="cancel/Area2D" to="cancel" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="cancel/Area2D" to="cancel" method="_on_Area2D_mouse_exited"]
+[connection signal="mouse_entered" from="pickup/Area2D" to="pickup" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="pickup/Area2D" to="pickup" method="_on_Area2D_mouse_exited"]
+[connection signal="mouse_entered" from="observe/Area2D" to="observe" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="observe/Area2D" to="observe" method="_on_Area2D_mouse_exited"]

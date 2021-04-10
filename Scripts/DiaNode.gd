@@ -2,9 +2,15 @@ extends Node2D
 
 onready var collisionShape = $Area2D/CollisionShape2D
 onready var NPCPrompt = preload("res://Scenes/NPC_InitPrompt.tscn")
+onready var ITEMPrompt = preload("res://Scenes/ITEM_InitPrompt.tscn")
 
 export(Shape2D) var shape
 export(String) var mode = "NPC"
+
+var script1 
+var script2
+
+signal choiceMade
 
 var canMousePress
 
@@ -13,15 +19,19 @@ func _ready():
 
 func _on_Area2D_mouse_entered():
 	canMousePress = true
-	print("mouse detected: entered")
 
 func _on_Area2D_mouse_exited():
 	canMousePress = false
-	print("mouse detected: exited")
 	
 func _choiceMade(choice):
-	print("dianode received: ", choice)
+	match choice:
+		"OBSERVE":
+			_sendToDialogue(script1)
 
+func _sendToDialogue(script):
+	emit_signal("choiceMade", script)
+	
+	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("right_click") && canMousePress:
 		match mode:
@@ -30,4 +40,8 @@ func _physics_process(delta):
 				npcPrompt.position.y = position.y - 50
 				npcPrompt.connect("decided", self, "_choiceMade")
 				add_child(npcPrompt)
-		
+			"ITEM":
+				var itemPrompt = ITEMPrompt.instance()
+				itemPrompt.position.y = position.y - 50
+				itemPrompt.connect("decided", self, "_choiceMade")
+				add_child(itemPrompt)

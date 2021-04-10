@@ -1,23 +1,78 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Simon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/NPC_InitPrompt.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/walls-tileset.res" type="TileSet" id=3]
+[ext_resource path="res://Scripts/LightMask.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/lightTexture.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/floor.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Door.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Bed.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/ROOT.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/DialogueSystem.tscn" type="PackedScene" id=10]
+
+[sub_resource type="TileSet" id=1]
+0/name = "floor.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 128, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
 [node name="ROOT" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="TileMap" type="TileMap" parent="."]
+modulate = Color( 0.694118, 0.694118, 0.694118, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0 )
 
 [node name="YSort" type="YSort" parent="."]
-
-[node name="Simon" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 110.999, 171.111 )
 
 [node name="InitPrompt" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 308.697, 301.094 )
 
 [node name="TileMap" type="TileMap" parent="YSort"]
+light_mask = 2
 tile_set = ExtResource( 3 )
 cell_tile_origin = 2
 cell_y_sort = true
 centered_textures = true
 format = 1
-tile_data = PoolIntArray( -196609, 4, 0, -262143, 14, 0, -262142, 14, 0, -262141, 14, 0, -262140, 14, 0, -262139, 14, 0, -262138, 14, 0, -262137, 14, 0, -262136, 14, 0, -262134, 5, 0, -262132, 14, 0, -262131, 14, 0, -262129, 5, 0, -262127, 14, 0, -262126, 14, 0, -262125, 14, 0, -262124, 6, 0, 131071, 2, 0, 65546, 2, 0, 65551, 2, 0, 65556, 2, 0, 196607, 2, 0, 131082, 10, 0, 131084, 15, 0, 131086, 13, 0, 131088, 15, 0, 131090, 13, 0, 131092, 9, 0, 262143, 2, 0, 327679, 2, 0, 262164, 2, 0, 393215, 2, 0, 327690, 1, 0, 327700, 2, 0, 458751, 2, 0, 393236, 2, 0, 524287, 2, 0, 458772, 2, 0, 589823, 2, 0, 524308, 2, 0, 655359, 2, 0, 589844, 2, 0, 720895, 2, 0, 655370, 2, 0, 655380, 2, 0, 786431, 2, 0, 720906, 2, 0, 720916, 2, 0, 851967, 2, 0, 786442, 2, 0, 786452, 2, 0, 917503, 10, 0, 851969, 14, 0, 851970, 14, 0, 851971, 14, 0, 851972, 14, 0, 851973, 14, 0, 851974, 15, 0, 851976, 13, 0, 851978, 11, 0, 851980, 14, 0, 851981, 14, 0, 851982, 14, 0, 851983, 14, 0, 851984, 14, 0, 851985, 14, 0, 851986, 14, 0, 851987, 14, 0, 851988, 12, 0, 1310719, 0, 0, 1245185, 0, 0, 1245187, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0 )
+tile_data = PoolIntArray( -196609, 4, 0, -262143, 14, 0, -262142, 14, 0, -262141, 14, 0, -262140, 14, 0, -262139, 14, 0, -262138, 14, 0, -262137, 14, 0, -262136, 14, 0, -262134, 5, 0, -262132, 14, 0, -262131, 14, 0, -262129, 5, 0, -262127, 14, 0, -262126, 14, 0, -262125, 14, 0, -262124, 6, 0, 131071, 2, 0, 65546, 2, 0, 65551, 2, 0, 65556, 2, 0, 196607, 2, 0, 131082, 10, 0, 131084, 15, 0, 131086, 13, 0, 131088, 15, 0, 131090, 13, 0, 131092, 9, 0, 262143, 2, 0, 327679, 2, 0, 262164, 2, 0, 393215, 2, 0, 327690, 1, 0, 327700, 2, 0, 458751, 2, 0, 393236, 2, 0, 524287, 2, 0, 458772, 2, 0, 589823, 2, 0, 524308, 2, 0, 655359, 2, 0, 589844, 2, 0, 720895, 2, 0, 655370, 2, 0, 655380, 2, 0, 786431, 2, 0, 720906, 2, 0, 720916, 2, 0, 851967, 2, 0, 786442, 2, 0, 786452, 2, 0, 917503, 10, 0, 851969, 14, 0, 851970, 14, 0, 851971, 14, 0, 851972, 14, 0, 851973, 14, 0, 851974, 15, 0, 851976, 13, 0, 851978, 11, 0, 851980, 14, 0, 851981, 14, 0, 851982, 14, 0, 851983, 14, 0, 851984, 14, 0, 851985, 14, 0, 851986, 14, 0, 851987, 14, 0, 851988, 12, 0 )
+
+[node name="Door2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1120, 128 )
+
+[node name="Door" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 864, 128 )
+
+[node name="Door3" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 480, 832 )
+
+[node name="Simon" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 110.999, 171.111 )
+
+[node name="Light2D" type="Light2D" parent="YSort/Simon"]
+position = Vector2( 476.53, -53.4365 )
+texture = ExtResource( 5 )
+mode = 3
+range_item_cull_mask = 2
+script = ExtResource( 4 )
+
+[node name="Bed" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 1152, 424 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueSystem" parent="CanvasLayer" instance=ExtResource( 10 )]
