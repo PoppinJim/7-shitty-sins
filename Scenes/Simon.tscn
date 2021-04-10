@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scripts/Simon.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Simon.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/DiaNode.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 13.3598
@@ -62,7 +63,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=25]
 resource_name = "Walk_Back"
 length = 0.8
 loop = true
@@ -181,8 +182,15 @@ start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
+[sub_resource type="CapsuleShape2D" id=24]
+radius = 20.0
+height = 50.0
+
 [node name="Simon" type="KinematicBody2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -84.3546, 15.9321 ]
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -35.834 )
@@ -199,7 +207,7 @@ anims/Idle_Back = SubResource( 2 )
 anims/Idle_Front = SubResource( 3 )
 anims/Idle_Left = SubResource( 4 )
 anims/Idle_Right = SubResource( 5 )
-anims/Walk_Back = SubResource( 6 )
+anims/Walk_Back = SubResource( 25 )
 anims/Walk_Front = SubResource( 7 )
 anims/Walk_Left = SubResource( 8 )
 anims/Walk_Right = SubResource( 9 )
@@ -211,3 +219,10 @@ active = true
 parameters/playback = SubResource( 23 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
+
+[node name="DiaNode" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, -35.8587 )
+shape = SubResource( 24 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true

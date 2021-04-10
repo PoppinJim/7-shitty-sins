@@ -1,0 +1,286 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Sprites/wall.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/wall.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 48 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32, 193.138 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 32, 176 )
+
+[node name="Node" type="Node"]
+
+[node name="single_wall" type="Sprite" parent="."]
+position = Vector2( -0.611176, -0.467819 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 12
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="single_wall"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="single_wall/StaticBody2D"]
+position = Vector2( 0.611176, 0.969772 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="single_wall"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="single_wall/Area2D"]
+polygon = PoolVector2Array( -31.3888, -287.532, 32.6112, -287.532, 32.6112, 32.4678, -31.3888, 32.4678 )
+
+[node name="connected_wall1" type="Sprite" parent="."]
+position = Vector2( 119.389, -0.467819 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall1"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="connected_wall1/StaticBody2D"]
+position = Vector2( 0.611176, 16.9698 )
+shape = SubResource( 2 )
+
+[node name="connected_wall2" type="Sprite" parent="."]
+position = Vector2( 271, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall2"]
+position = Vector2( 1.00003, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="connected_wall2/StaticBody2D"]
+position = Vector2( -3.05176e-05, -128 )
+shape = SubResource( 3 )
+
+[node name="connected_wall3" type="Sprite" parent="."]
+position = Vector2( 439.389, -0.467819 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 8
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall3"]
+position = Vector2( 1, 0.498047 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="connected_wall3/StaticBody2D"]
+position = Vector2( -0.388824, -144.03 )
+shape = SubResource( 4 )
+
+[node name="connected_wall4" type="Sprite" parent="."]
+position = Vector2( -128, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall4"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall4/StaticBody2D"]
+position = Vector2( 16, 16.502 )
+polygon = PoolVector2Array( -48, -48, 48, -48, 48, 16, 16, 16, 16, 48, -48, 48 )
+
+[node name="connected_wall5" type="Sprite" parent="."]
+position = Vector2( -264, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall5"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall5/StaticBody2D"]
+position = Vector2( 0, 16.502 )
+polygon = PoolVector2Array( -64, -48, 64, -48, 64, 16, 32, 16, 32, 48, -32, 48, -32, 16, -64, 16 )
+
+[node name="connected_wall6" type="Sprite" parent="."]
+position = Vector2( -424, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall6"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall6/StaticBody2D"]
+position = Vector2( -16, 16.502 )
+polygon = PoolVector2Array( -48, 16, -48, -48, 48, -48, 48, 48, -16, 48, -16, 16 )
+
+[node name="connected_wall7" type="Sprite" parent="."]
+position = Vector2( -592, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 5
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall7"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall7/StaticBody2D"]
+position = Vector2( 16, 16.502 )
+polygon = PoolVector2Array( 48, -48, 16, -48, 16, -336, -48, -336, -48, 48, 16, 48, 16, 16, 48, 16 )
+
+[node name="connected_wall8" type="Sprite" parent="."]
+position = Vector2( -744, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 6
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall8"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall8/StaticBody2D"]
+position = Vector2( 16, 16.502 )
+polygon = PoolVector2Array( -48, 48, 16, 48, 16, 16, 48, 16, 48, -48, 16, -48, 16, -336, -48, -336, -48, -48, -80, -48, -80, 16, -48, 16 )
+
+[node name="connected_wall9" type="Sprite" parent="."]
+position = Vector2( -896, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 7
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall9"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall9/StaticBody2D"]
+position = Vector2( 16, 16.502 )
+polygon = PoolVector2Array( -48, -336, -48, -48, -80, -48, -80, 16, -48, 16, -48, 48, 16, 48, 16, -48, 16, -336 )
+
+[node name="connected_wall10" type="Sprite" parent="."]
+position = Vector2( -1064, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 9
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall10"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall10/StaticBody2D"]
+position = Vector2( 16, 16.502 )
+polygon = PoolVector2Array( -48, 16, 48, 16, 48, -48, 16, -48, 16, -336, -48, -336 )
+
+[node name="connected_wall11" type="Sprite" parent="."]
+position = Vector2( -1200, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 10
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall11"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall11/StaticBody2D"]
+position = Vector2( 16, 16.502 )
+polygon = PoolVector2Array( -80, 16, 48, 16, 48, -48, 16, -48, 16, -336, -48, -336, -48, -48, -80, -48 )
+
+[node name="connected_wall12" type="Sprite" parent="."]
+position = Vector2( -1392, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 11
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall12"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall12/StaticBody2D"]
+position = Vector2( 16, 16.502 )
+polygon = PoolVector2Array( -80, 16, 16, 16, 16, -336, -48, -336, -48, -48, -80, -48 )
+
+[node name="connected_wall13" type="Sprite" parent="."]
+position = Vector2( -1560, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 13
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall13"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall13/StaticBody2D"]
+position = Vector2( 16, 16.502 )
+polygon = PoolVector2Array( -48, 16, 48, 16, 48, -48, -48, -48 )
+
+[node name="connected_wall14" type="Sprite" parent="."]
+position = Vector2( -1696, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 14
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall14"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall14/StaticBody2D"]
+position = Vector2( 16, 16.502 )
+polygon = PoolVector2Array( 48, -48, 48, 16, -80, 16, -80, -48 )
+
+[node name="connected_wall15" type="Sprite" parent="."]
+position = Vector2( -1848, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.990875, -127.532 )
+vframes = 4
+hframes = 4
+frame = 15
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="connected_wall15"]
+position = Vector2( 0, -0.501953 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="connected_wall15/StaticBody2D"]
+position = Vector2( 16, 16.502 )
+polygon = PoolVector2Array( 16, -48, 16, 16, -80, 16, -80, -48 )
+[connection signal="mouse_entered" from="single_wall/Area2D" to="single_wall" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="single_wall/Area2D" to="single_wall" method="_on_Area2D_mouse_exited"]
