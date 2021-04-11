@@ -11,6 +11,7 @@ var script1
 var script2
 
 signal choiceMade
+signal interact
 
 var canMousePress
 
@@ -27,10 +28,14 @@ func _choiceMade(choice):
 	match choice:
 		"OBSERVE":
 			_sendToDialogue(script1)
+		"TALK":
+			_sendToDialogue(script2)
+		"PICKUP":
+			emit_signal("interact")
 
 func _sendToDialogue(script):
 	emit_signal("choiceMade", script)
-	
+
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("right_click") && canMousePress:

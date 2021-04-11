@@ -2,19 +2,17 @@ extends StaticBody2D
 
 var open = false
 
-func _evaluateChoice(choice):
-	print("door signal received: ", choice)
-	if choice == "PICKUP":
-		_door()
 
 func _door():
+	print("signal received")
 	if open == true:
 		open = false
 	else:
 		open = true
 
 func _ready():
-	$DiaNode.connect("choiceMade", self, "_evaluateChoice")
+	$DiaNode.connect("interact", self, "_door")
+	$DiaNode.script1 = Globals._openJSON("res://JSON Files/observe_door.JSON")
 
 func _physics_process(delta):
 	match open:

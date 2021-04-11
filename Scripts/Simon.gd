@@ -29,6 +29,11 @@ func animate():
 		animationState.travel("Walk")
 	else:
 		animationState.travel("Idle")
+		
+func _ready():
+	$DiaNode.script1 = Globals._openJSON("res://JSON Files/observe_self.JSON")
+	$DiaNode.script2 = Globals._openJSON("res://JSON Files/talk_self.JSON")
+
 func _physics_process(delta):
 	move()
 	animate()
