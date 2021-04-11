@@ -23,7 +23,7 @@ position = Vector2( 0, -16 )
 shape = SubResource( 1 )
 
 [node name="DiaNode" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, -16 )
+position = Vector2( 0, -48 )
 shape = SubResource( 2 )
 mode = "ITEM"
-targetPositionY = -25
+targetPositionY = -15

@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/DiaNode.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 13.3598
+radius = 23.3087
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle_Back"
@@ -193,13 +193,13 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -35.834 )
+position = Vector2( 0, -42.5157 )
 texture = ExtResource( 2 )
 vframes = 5
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -0.009 )
+position = Vector2( -0.33371, 2.31717 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -221,9 +221,10 @@ parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
 
 [node name="DiaNode" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, -35.8587 )
+position = Vector2( 0, -42.5404 )
 shape = SubResource( 24 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -6.68174 )
 current = true
-zoom = Vector2( 0.75, 0.75 )
+zoom = Vector2( 0.85, 0.85 )

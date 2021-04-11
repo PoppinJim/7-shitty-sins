@@ -4,7 +4,7 @@ var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
 export var SPEED = 275
 export var acceleration = 0.06
-export var friction = 0.1
+export var friction = 0.3
 
 onready var animationTree = $AnimationTree
 onready var animationState = $AnimationTree.get("parameters/playback")
