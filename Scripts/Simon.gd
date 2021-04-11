@@ -2,10 +2,12 @@ extends KinematicBody2D
 
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
+var posMultiplier = Vector2(50,50)
 export var SPEED = 275
 export var acceleration = 0.06
 export var friction = 0.3
 
+onready var bullet = preload("res://Scenes/Bullet.tscn")
 onready var animationTree = $AnimationTree
 onready var animationState = $AnimationTree.get("parameters/playback")
 
@@ -38,4 +40,9 @@ func _physics_process(delta):
 	move()
 	animate()
 	
-	
+	if Input.is_action_just_pressed("left_click"):
+		var bulletInstance = bullet.instance()
+		bulletInstance.position = $MuzzlePoint.global_position
+		bulletInstance.direction = position.direction_to(get_global_mouse_position())
+		get_parent().add_child(bulletInstance)
+		print("left moouse click detected: ", bulletInstance.direction)
