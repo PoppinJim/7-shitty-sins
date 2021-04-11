@@ -11,6 +11,7 @@ extents = Vector2( 128, 40 )
 extents = Vector2( 128, 50 )
 
 [node name="Bed" type="StaticBody2D"]
+position = Vector2( 0, 8 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]

@@ -5,6 +5,7 @@
 [node name="DiaNode" type="Node2D" groups=[
 "diaNode",
 ]]
+z_index = 3
 script = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]

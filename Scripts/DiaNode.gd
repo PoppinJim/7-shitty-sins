@@ -6,6 +6,7 @@ onready var ITEMPrompt = preload("res://Scenes/ITEM_InitPrompt.tscn")
 
 export(Shape2D) var shape
 export(String) var mode = "NPC"
+export var targetPositionY = -50
 
 var script1 
 var script2
@@ -42,11 +43,11 @@ func _physics_process(delta):
 		match mode:
 			"NPC":
 				var npcPrompt = NPCPrompt.instance()
-				npcPrompt.position.y = position.y - 50
+				npcPrompt.position.y = position.y + targetPositionY
 				npcPrompt.connect("decided", self, "_choiceMade")
 				add_child(npcPrompt)
 			"ITEM":
 				var itemPrompt = ITEMPrompt.instance()
-				itemPrompt.position.y = position.y - 50
+				itemPrompt.position.y = position.y + targetPositionY
 				itemPrompt.connect("decided", self, "_choiceMade")
 				add_child(itemPrompt)
