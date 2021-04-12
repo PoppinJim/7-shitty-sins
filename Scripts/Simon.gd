@@ -6,6 +6,14 @@ var posMultiplier = Vector2(50,50)
 export var SPEED = 275
 export var acceleration = 0.06
 export var friction = 0.3
+var item = null
+var toggle = false
+
+### variables for counting sins
+var foodAmount = 0
+
+
+signal itemUsed
 
 onready var bullet = preload("res://Scenes/Bullet.tscn")
 onready var animationTree = $AnimationTree
@@ -40,9 +48,20 @@ func _physics_process(delta):
 	move()
 	animate()
 	
-	if Input.is_action_just_pressed("left_click"):
-		var bulletInstance = bullet.instance()
-		bulletInstance.position = $MuzzlePoint.global_position
-		bulletInstance.direction = position.direction_to(get_global_mouse_position())
-		get_parent().add_child(bulletInstance)
-		print("left moouse click detected: ", bulletInstance.direction)
+	if Input.is_action_just_pressed("use_item") && toggle:
+		_useItem()
+
+func _changeItem(itemResource):
+	print("item received: ", itemResource.name)
+	item = itemResource
+
+func _useItem():
+	match item.name:
+		"Bread":
+			item = null
+			toggle = false
+	emit_signal("itemUsed")
+		
+
+	
+	

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/DiaNode.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Item.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 15.4164
+
+[node name="Item" type="KinematicBody2D" groups=[
+"Item",
+]]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Texture" type="Sprite" parent="."]
+position = Vector2( 0.459885, 0.625664 )
+
+[node name="DiaNode" parent="." instance=ExtResource( 1 )]
+shape = SubResource( 1 )
+mode = "ITEM"

@@ -2,6 +2,7 @@ extends Node2D
 
 onready var diaNodes = get_tree().get_nodes_in_group("diaNode")
 onready var letterA = preload("res://Scenes/Note.tscn")
+onready var items = get_tree().get_nodes_in_group("Item")
 
 var lust = false
 var gluttony = false
@@ -21,8 +22,22 @@ func _pickUpNote():
 	$CanvasLayer.add_child(letter)
 	pass
 
+func _itemPickedUp(itemResource):
+	print("signal received: ", itemResource)
+	$CanvasLayer/itemSlot._insertItem(itemResource)
+	$YSort/Simon._changeItem(itemResource)
+	
+func _itemSlotToggled(equipped):
+	$YSort/Simon.toggle = equipped
+
+	pass
+
 func _ready():
 	for i in diaNodes:
 		i.connect("choiceMade", $CanvasLayer/DialogueSystem, "_initDialogue")
 	$YSort/Computer.connect("fapped", self, "_trackSins")
 	$YSort/Paper. connect("pickup", self, "_pickUpNote")
+	for  i in items:
+		i.connect("pickupItem", self, "_itemPickedUp")
+	$CanvasLayer/itemSlot.connect("toggled", self, "_itemSlotToggled")
+	$YSort/Simon.connect("itemUsed", $CanvasLayer/itemSlot, "_itemUsed")

@@ -12,6 +12,8 @@ extents = Vector2( 48, 64 )
 
 [node name="Fridge" type="StaticBody2D"]
 script = ExtResource( 3 )
+observeScript = "res://JSON Files/observe_fridge.JSON"
+observeScript2 = "res://JSON Files/observe_fridge_open.JSON"
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -80 )

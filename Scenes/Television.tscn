@@ -14,16 +14,15 @@ extents = Vector2( 28, 96 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -96 )
+position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -32 )
+position = Vector2( 0, 56 )
 shape = SubResource( 1 )
 
 [node name="DiaNode" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, -88 )
 shape = SubResource( 2 )
 mode = "ITEM"
 targetPositionY = -25

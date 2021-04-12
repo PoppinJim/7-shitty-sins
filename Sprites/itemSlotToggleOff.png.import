@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dialogueBox.png-42f0f413575a8fd7cdfae7d54939ff8b.stex"
+path="res://.import/itemSlotToggleOff.png-546b17788e0c95d53f5f9b64add35a77.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/dialogueBox.png"
-dest_files=[ "res://.import/dialogueBox.png-42f0f413575a8fd7cdfae7d54939ff8b.stex" ]
+source_file="res://Sprites/itemSlotToggleOff.png"
+dest_files=[ "res://.import/itemSlotToggleOff.png-546b17788e0c95d53f5f9b64add35a77.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
