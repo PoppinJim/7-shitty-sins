@@ -1,0 +1,10 @@
+[
+	{ "Person" : "Alex", "Text" : "So basically I'm going to present you a certain scenario" },
+	{ "Person" : "Alex", "Text" : "And you have to decide what to do in that situation" },
+	{ "Person" : "Alex", "Text" : "A dice roll will determine whether or not you were successful in that attempt" },
+	{ "Person" : "Toby", "Text" : "Ok, lets goooooo" },
+	{ "Person" : "Alex", "Text" : "Also a succesful dice roll will mean rolling a 7" },
+	{ "Person" : "Toby", "Text" : "What why?"},
+	{ "Person" : "Alex", "Text" : "Because I just got this 7 sided die that I have no other use for" },
+	{ "Person" : "Toby", "Text" : "Uh ok?" },
+]

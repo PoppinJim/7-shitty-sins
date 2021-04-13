@@ -1,9 +1,8 @@
 extends KinematicBody2D
 
 export(Resource) var resourceItem
-
 signal pickupItem
-
+var velocity = Vector2.ZERO
 func _pickUp():
 	print("picked up item")
 	emit_signal("pickupItem", resourceItem)
@@ -15,4 +14,6 @@ func _ready():
 	$Texture.texture = resourceItem.texture
 	if resourceItem.customTooltip:
 		$DiaNode.script1 = Globals._openJSON(resourceItem.customTooltip)
-
+	add_to_group("Item")
+func _physics_process(delta):
+	velocity = move_and_slide(velocity)

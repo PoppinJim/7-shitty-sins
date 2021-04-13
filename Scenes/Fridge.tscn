@@ -10,7 +10,9 @@ extents = Vector2( 48, 32 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 48, 64 )
 
-[node name="Fridge" type="StaticBody2D"]
+[node name="Fridge" type="StaticBody2D" groups=[
+"Container",
+]]
 script = ExtResource( 3 )
 observeScript = "res://JSON Files/observe_fridge.JSON"
 observeScript2 = "res://JSON Files/observe_fridge_open.JSON"

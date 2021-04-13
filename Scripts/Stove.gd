@@ -2,6 +2,7 @@ extends StaticBody2D
 
 var on = false
 
+
 func _stove():
 	if on == false:
 		on = true

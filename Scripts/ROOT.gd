@@ -3,6 +3,7 @@ extends Node2D
 onready var diaNodes = get_tree().get_nodes_in_group("diaNode")
 onready var letterA = preload("res://Scenes/Note.tscn")
 onready var items = get_tree().get_nodes_in_group("Item")
+onready var containers = get_tree().get_nodes_in_group("Container")
 
 var lust = false
 var gluttony = false
@@ -11,6 +12,9 @@ var sloth = false
 var wrath = false
 var ency = false
 var pride = false
+
+func _reconnect(item):
+	item.connect("pickupItem", self, "_itemPickedUp")
 
 func _trackSins(SIN):
 	print("signal received: ", SIN)
@@ -39,5 +43,8 @@ func _ready():
 	$YSort/Paper. connect("pickup", self, "_pickUpNote")
 	for  i in items:
 		i.connect("pickupItem", self, "_itemPickedUp")
+	for i in containers:
+		i.connect("itemDropped", self, "_reconnect")
 	$CanvasLayer/itemSlot.connect("toggled", self, "_itemSlotToggled")
 	$YSort/Simon.connect("itemUsed", $CanvasLayer/itemSlot, "_itemUsed")
+	

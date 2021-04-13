@@ -2,6 +2,7 @@ extends Node2D
 
 export(Resource) var currentItem
 var equipped = false
+signal itemExpelled
 
 signal toggled
 
@@ -23,7 +24,8 @@ func _itemUsed():
 	print("item has been used: ", currentItem.name)
 	_insertItem(null)
 
-
+func _expelItem():
+	emit_signal("itemExpelled")
 
 
 func _on_TextureButton_toggled(button_pressed):

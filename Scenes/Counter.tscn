@@ -10,7 +10,9 @@ extents = Vector2( 48, 40 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
 
-[node name="Counter" type="StaticBody2D"]
+[node name="Counter" type="StaticBody2D" groups=[
+"Container",
+]]
 script = ExtResource( 2 )
 observeScript = "res://JSON Files/observe_counter.JSON"
 observeScript2 = "res://JSON Files/observe_counter.JSON"

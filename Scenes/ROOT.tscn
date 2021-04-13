@@ -103,6 +103,7 @@ position = Vector2( 592, -136 )
 
 [node name="Fridge" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 400, -144 )
+stockItem = ExtResource( 23 )
 
 [node name="Counter2" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 48, -160 )
@@ -110,8 +111,13 @@ position = Vector2( 48, -160 )
 [node name="Counter3" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 496, 56 )
 
+[node name="Item" parent="YSort/Counter3" instance=ExtResource( 22 )]
+position = Vector2( 0, -72 )
+resourceItem = ExtResource( 23 )
+
 [node name="Counter4" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 144, -160 )
+stockItem = ExtResource( 23 )
 
 [node name="Sink" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( 240, -144 )
@@ -121,6 +127,7 @@ position = Vector2( 400, 56 )
 
 [node name="Counter" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 592, 56 )
+stockItem = ExtResource( 23 )
 
 [node name="Counter6" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 1240, 464 )
