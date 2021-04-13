@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "cake_slice"
+name = "Cake Slice"
 texture = ExtResource( 2 )
 customTooltip = ""

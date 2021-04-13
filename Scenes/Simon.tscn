@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scripts/Simon.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Simon.png" type="Texture" id=2]
@@ -6,6 +6,58 @@
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.3087
+
+[sub_resource type="Animation" id=25]
+resource_name = "Gun_Raise_Back"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 21, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "Gun_Raise_Front"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 20, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "Gun_Raise_Left"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 22, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "Gun_Raise_Right"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 23, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle_Back"
@@ -170,6 +222,29 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 )
 }
 
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Gun_Raise_Front"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "Gun_Raise_Right"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "Gun_Raise_Left"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "Gun_Raise_Back"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=33]
+blend_point_0/node = SubResource( 29 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 30 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 31 )
+blend_point_2/pos = Vector2( -1, 0 )
+blend_point_3/node = SubResource( 32 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Idle_Front"
 
@@ -220,12 +295,18 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
 [sub_resource type="AnimationNodeStateMachine" id=22]
+states/Gun/node = SubResource( 33 )
+states/Gun/position = Vector2( 328, 126 )
 states/Idle/node = SubResource( 14 )
 states/Idle/position = Vector2( 249, 39 )
 states/Walk/node = SubResource( 19 )
 states/Walk/position = Vector2( 497, 39 )
-transitions = [ "Idle", "Walk", SubResource( 20 ), "Walk", "Idle", SubResource( 21 ) ]
+transitions = [ "Idle", "Walk", SubResource( 20 ), "Walk", "Idle", SubResource( 21 ), "Idle", "Gun", SubResource( 34 ), "Gun", "Idle", SubResource( 35 ) ]
 start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
@@ -245,12 +326,17 @@ position = Vector2( 0, -42.5157 )
 texture = ExtResource( 2 )
 vframes = 6
 hframes = 4
+frame = 22
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.33371, 2.31717 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Gun_Raise_Back = SubResource( 25 )
+anims/Gun_Raise_Front = SubResource( 26 )
+anims/Gun_Raise_Left = SubResource( 27 )
+anims/Gun_Raise_Right = SubResource( 28 )
 anims/Idle_Back = SubResource( 2 )
 anims/Idle_Front = SubResource( 3 )
 anims/Idle_Left = SubResource( 4 )
@@ -265,6 +351,7 @@ tree_root = SubResource( 22 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 23 )
+parameters/Gun/blend_position = Vector2( -0.12357, -0.0517242 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
 

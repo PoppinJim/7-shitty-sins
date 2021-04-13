@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/Simon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/groundPaper.tscn" type="PackedScene" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://Scenes/Item.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Sprites/Items/bread.tres" type="Resource" id=23]
 [ext_resource path="res://Scenes/itemSlot.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Sprites/Items/spaghetti.tres" type="Resource" id=25]
+[ext_resource path="res://Sprites/Items/gun.tres" type="Resource" id=26]
 
 [sub_resource type="TileSet" id=1]
 0/name = "floor.png 0"
@@ -103,7 +105,7 @@ position = Vector2( 592, -136 )
 
 [node name="Fridge" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 400, -144 )
-stockItem = ExtResource( 23 )
+stockItem = ExtResource( 25 )
 
 [node name="Counter2" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 48, -160 )
@@ -130,7 +132,8 @@ position = Vector2( 592, 56 )
 stockItem = ExtResource( 23 )
 
 [node name="Counter6" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 1240, 464 )
+position = Vector2( 1232, 392 )
+stockItem = ExtResource( 26 )
 
 [node name="Sink2" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( 912, -152 )

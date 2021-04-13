@@ -22,7 +22,10 @@ func _insertItem(itemResource):
 
 func _itemUsed():
 	print("item has been used: ", currentItem.name)
-	_insertItem(null)
+	if currentItem.name != "Gun":
+		print(currentItem.name)
+		_insertItem(null)
+		print("item cleared?")
 
 func _expelItem():
 	emit_signal("itemExpelled")

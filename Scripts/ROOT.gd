@@ -47,4 +47,5 @@ func _ready():
 		i.connect("itemDropped", self, "_reconnect")
 	$CanvasLayer/itemSlot.connect("toggled", self, "_itemSlotToggled")
 	$YSort/Simon.connect("itemUsed", $CanvasLayer/itemSlot, "_itemUsed")
-	
+	$YSort/Simon.connect("commitSin", self, "_trackSins")
+	$YSort/Television.connect("commitSin", self, "_trackSins")
